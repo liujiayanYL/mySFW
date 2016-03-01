@@ -8,9 +8,7 @@
     <artifactId>m.sfw</artifactId>
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
-    <modules>
-        <module>MyWebApp</module>
-    </modules>
+
     <dependencies>
         <dependency>
             <groupId>javax.servlet</groupId>
@@ -65,6 +63,16 @@
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-dbcp2</artifactId>
             <version>2.0.1</version>
+        </dependency>
+        <dependency>
+            <groupId>my.smartFrame.work</groupId>
+            <artifactId>m.sfw</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-clean-plugin</artifactId>
+            <version>2.4.1</version>
         </dependency>
     </dependencies>
 

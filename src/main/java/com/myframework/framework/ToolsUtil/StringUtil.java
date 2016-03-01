@@ -1,4 +1,4 @@
-package my.firstframework.framework.ToolsUtil;
+package com.myframework.framework.ToolsUtil;
 
 import org.apache.commons.lang3.StringUtils;
 

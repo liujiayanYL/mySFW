@@ -1,8 +1,13 @@
-package my.firstframework.framework.util;
+package com.myframework.framework.util;
 
+
+
+import com.myframework.framework.ToolsUtil.StringUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.io.File;
+import java.io.FileFilter;
 import java.net.URL;
 import java.util.Enumeration;
 import java.util.HashSet;
@@ -58,6 +63,31 @@ public class ClassUtil {
     }
 
     private static void addClass(Set<Class<?>> classSet,String packagePath,String packageName){
+        File[] files = new File(packagePath).listFiles(new FileFilter() {
+            @Override
+            public boolean accept(File pathname) {
+                return (pathname.isFile() && pathname.getName().endsWith(".class"))||pathname.isDirectory();
+            }
+        });
+        for(File file : files){
+            String filename = "";
+            filename = file.getName();
+            if(file.isFile()){
+                String className = filename.substring(0,filename.lastIndexOf("."));
+                if(StringUtil.isEmpty(packageName)){
+                    className = packageName + "." +className;
+                }
+                doAddClassSet(classSet,className);
+            }
+            else{
+
+            }
+        }
+    }
+
+    private static void doAddClassSet(Set<Class<?>> classSet,String className){
+        Class<?> cls = loadClass(className,false);
+        classSet.add(cls);
 
     }
 }
