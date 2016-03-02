@@ -8,10 +8,13 @@ import org.slf4j.LoggerFactory;
 
 import java.io.File;
 import java.io.FileFilter;
+import java.net.JarURLConnection;
 import java.net.URL;
 import java.util.Enumeration;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.jar.JarEntry;
+import java.util.jar.JarFile;
 
 /**
  * Created by liujiayan on 2016/3/1.
@@ -51,7 +54,27 @@ public class ClassUtil {
                 URL url = urlEnumeration.nextElement();
                 if(url != null){
                     String protocal = url.getProtocol();
-
+                    if("file".equals(protocal)){
+                        String packagePath = url.getPath().replaceAll("%20","");
+                        addClass(classSet,packagePath,packageName);
+                    }
+                    else if("jar".equals(protocal)){
+                        JarURLConnection jarURLConnection = (JarURLConnection)url.openConnection();
+                        if(jarURLConnection!= null){
+                            JarFile jarFile = jarURLConnection.getJarFile();
+                            if (jarFile != null){
+                                Enumeration<JarEntry> jarEntryEnumeration = jarFile.entries();
+                                while (jarEntryEnumeration.hasMoreElements()){
+                                    JarEntry jarEntry = jarEntryEnumeration.nextElement();
+                                    String jarEntryName = jarEntry.getName();
+                                    if(jarEntryName.endsWith(".class")){
+                                        String className = jarEntryName.substring(0,jarEntryName.lastIndexOf(".")).replaceAll("/",".");
+                                        doAddClassSet(classSet,className);
+                                    }
+                                }
+                            }
+                        }
+                    }
                 }
             }
         }
