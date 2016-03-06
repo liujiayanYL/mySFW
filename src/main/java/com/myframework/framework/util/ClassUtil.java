@@ -44,6 +44,13 @@ public class ClassUtil {
     }
 
     /**
+     * 默认不初始化获得加载类
+     */
+    public static Class<?> loadClass(String className){
+        return loadClass(className,false);
+    }
+
+    /**
      * 获取指定报名下的全部类
      */
     public static Set<Class<?>> getClassSet(String packageName){
