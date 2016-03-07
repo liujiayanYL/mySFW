@@ -22,4 +22,15 @@ public final class StringUtil {
     public static boolean isNotEmpty(String s){
         return !isEmpty(s);
     }
+
+
+    public static String[] splitString(String s, String regex){
+        String[] split = null;
+        if(isNotEmpty(s)){
+            if(s.indexOf(regex) != -1){
+                split = s.split(regex);
+            }
+        }
+        return split;
+    }
 }

@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="UseCase:war">
+    <output-path>$PROJECT_DIR$/UseCase/target</output-path>
+    <root id="archive" name="useCase.war">
+      <element id="artifact" artifact-name="UseCase:war exploded" />
+    </root>
+  </artifact>
+</component>

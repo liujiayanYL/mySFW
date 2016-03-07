@@ -23,6 +23,7 @@
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
         <module name="MyWebApp" />
+        <module name="UseCase" />
       </profile>
     </annotationProcessing>
   </component>

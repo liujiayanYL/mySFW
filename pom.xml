@@ -8,6 +8,9 @@
     <artifactId>m.sfw</artifactId>
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
+    <modules>
+        <module>UseCase</module>
+    </modules>
 
     <dependencies>
         <dependency>
